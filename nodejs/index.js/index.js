@@ -2,12 +2,14 @@
 
 // type nul > index.js
 
-
-import { readFileSync, direc } from 'fs';
+import path from 'path';
+import * as fs from 'fs';
+// import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 
 const buf_data = readFileSync("read.txt");       // THIS WILL GIVES US DATA IN BUFFER OR ENCRPT TYPE TO CONVERT IT TO READBLE WE WILL DO THE NEXT STEP MENTIONED
 
-org_data = buf_data.toString();
+const org_data = buf_data.toString();
 console.log(org_data);
 
 
@@ -16,3 +18,7 @@ console.log(org_data);
 const nonbuf_data = readFileSync("read.txt", 'utf-8');
 console.log(nonbuf_data);
 
+const dirPath = path.join(__dirname , 'curd');
+const filePath = `${dirPath}/apple.txt`;
+
+fs.writeFileSync(filePath,'this is text');
