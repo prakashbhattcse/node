@@ -3,12 +3,20 @@ const path = require('path');
 var express = require('express')
 var app = express();
 
-// console.log(__dirname);
-// console.log(path.join(__dirname, '../public'));
+console.log(__dirname);                 // this will give directory path 
+// OUTPUT   -  D:\nodejs\expressjs\public
+
+console.log(path.join(__dirname, 'public'));     // this will give the public file path inside directory  
+// OUTPUT   -  D:\nodejs\expressjs\public\public
+
+const staticPath = path.join(__dirname, '/public');
+// const staticPaths = path.join(__dirname);
 
 
-const staticPath = path.join(__dirname, '../public');
-
+// app.get('/', function(req, res) {
+//     res.sendFile(staticPaths, '/index.html');
+//   });
+  
 app.set('view engine','hbs');
 
 // As we know template engine uses views folder but what if we want to use another name other then views
@@ -18,10 +26,26 @@ app.set('view engine','hbs');
 
 //  TO RENDER dynamic data
 app.get('/', (req, res) => {
+    const user={
+        name:'Peter',
+        email:'peter@test.com',
+        country:'USA',
+        skills:['php','js','c++']
+    }
+    res.render('index.hbs', {user})
+  })
+
+
+  
+
+  app.get('/', (req, res) => {
     res.render('index.hbs', {myName:'Amit'})
   })
 //  TO RENDER STATIC WEBSITE WITH EXPRESS JS
 app.use(express.static(staticPath));
+
+
+
 
 app.get('/', (req, res) => {
     res.send('hello amit from root folder')
@@ -39,7 +63,7 @@ app.use((req, res, next) => {
 
 // app.get('/nav', (req, res) => {
 //     res.send('hello from about');
-// });
+// }); 
 
 
 

@@ -18,7 +18,3 @@ console.log(org_data);
 const nonbuf_data = readFileSync("read.txt", 'utf-8');
 console.log(nonbuf_data);
 
-const dirPath = path.join(__dirname , 'curd');
-const filePath = `${dirPath}/apple.txt`;
-
-fs.writeFileSync(filePath,'this is text');
