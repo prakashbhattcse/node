@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
   
 
   app.get('/', (req, res) => {
-    res.render('index.hbs', {myName:'Amit'})
+    res.render('index', {myName:'Amit'})
   })
 //  TO RENDER STATIC WEBSITE WITH EXPRESS JS
 app.use(express.static(staticPath));
